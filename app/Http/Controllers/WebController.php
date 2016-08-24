@@ -15,7 +15,7 @@ class WebController extends Controller
 
     public function contact(ContactRequest $request)
     {
-        Mail::to($request->get('email'))->send(new Contact($request));
+        Mail::to(config('mail.from.address'))->send(new Contact($request));
 
         return redirect()->to('/#contact')->with('contact_success', true);
     }
